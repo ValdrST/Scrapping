@@ -1,7 +1,7 @@
 CREATE TABLE paises (
 Flag clob,
 Area int,
-pPopulation int,
+Population int,
 Iso varchar(10),
 Country varchar(50),
 Capital varchar(50),

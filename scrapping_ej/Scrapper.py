@@ -80,7 +80,7 @@ class Scrapper(object):
                                     list_ap = []
                                     for elem_a in list_a:
                                         list_ap.append(elem_a.contents[0].strip())
-                                    datos[label] = list_ap
+                                    datos[label] = ','.join(list_ap)
                                 else:
                                     if label == 'Continent':
                                         datos[label] = td.contents[0].contents[0]
