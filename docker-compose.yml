@@ -1,0 +1,38 @@
+version: "3.7"
+services:
+  scrapping-test:
+    build: ./
+    container_name: scrapping-test
+    networks:
+      - scrapping-test
+    volumes:
+      - ./:/app
+    entrypoint: ["/bin/sh","/app/run.sh"]
+    environment:
+      PYTHONUNBUFFERED: 1
+      PYTHONIOENCODING: UTF-8
+      HOST_DB: scrapping-db
+      USER_DB: 'user'
+      PASS_DB: 'password'
+      DATABASE_DB: 'db'
+  scrapping-db:
+    image: mysql:5.7
+    restart: always
+    container_name: scrapping-db
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - ./entrypointdb:/docker-entrypoint-initdb.d/:rw
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+networks:
+  scrapping-test:
+      driver: bridge
+      ipam:
+        config:
+          - subnet: 172.16.90.0/24
