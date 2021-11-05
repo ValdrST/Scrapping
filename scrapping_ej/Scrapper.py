@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup, NavigableString
 import urllib3
 import threading
 from base64 import b64encode
-#from .BaseController import BaseController
 import logging
 logging.basicConfig(filename='./scrapping-ej.log', level=logging.DEBUG)
 

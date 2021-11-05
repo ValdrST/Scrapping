@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import argparse
 from .Scrapper import Scrapper
+from .BaseController import BaseController
 from os import path
 import json
 
@@ -22,7 +23,10 @@ class Console(object):
     self.argumentParse()
     sc = Scrapper(self.args.url, self.args.proxy)
     sc.extract_currurl()
+    bc = BaseController()
+    for elem in sc.lista:          
+      bc.insertData(elem)
+    bc.conn.close()
     json_lista = json.dumps(sc.lista)
     with open('res.json', 'w') as f:
       f.write(json_lista)
-    print(sc.lista)

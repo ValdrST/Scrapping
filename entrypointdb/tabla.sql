@@ -1,8 +1,8 @@
 CREATE TABLE paises (
-Flag clob,
-Area int,
-Population int,
-Iso varchar(10),
+Flag LONGTEXT,
+Area varchar(50),
+Population varchar(50),
+Iso varchar(50),
 Country varchar(50),
 Capital varchar(50),
 Continent varchar(50),
